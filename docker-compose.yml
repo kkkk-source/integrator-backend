@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=integrator
+    ports:
+      - 3306:3306
