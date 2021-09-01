@@ -4,7 +4,9 @@ services:
   db:
     image: mysql:5.7
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=integrator
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
     ports:
       - 3306:3306
+    volumes:
+      - .mysql:/var/lib/mysql
