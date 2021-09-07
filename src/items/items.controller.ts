@@ -20,4 +20,9 @@ export class ItemsController {
   async create(@Body() itemToCreate: CreateItemDto): Promise<CreateItemDto> {
     return await this.itemsService.create(itemToCreate as Item);
   }
+
+  @Get()
+  async findAll(): Promise<Item[]> {
+    return await this.itemsService.findAll();
+  }
 }
