@@ -25,4 +25,9 @@ export class ItemsController {
   async findAll(): Promise<Item[]> {
     return await this.itemsService.findAll();
   }
+
+  @Delete(':id')
+  async remove(@Param('id') id: string): Promise<void> {
+    await this.itemsService.remove(+id);
+  }
 }
