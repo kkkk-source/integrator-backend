@@ -13,8 +13,12 @@ export class ItemsService {
   async create(item: Item): Promise<Item> {
     return await this.itemsRepository.save(item);
   }
-  
+
   async findAll(): Promise<Item[]> {
     return await this.itemsRepository.find();
+  }
+
+  async remove(id: number): Promise<void> {
+    await this.itemsRepository.delete(id);
   }
 }
