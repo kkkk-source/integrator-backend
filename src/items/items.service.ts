@@ -33,4 +33,8 @@ export class ItemsService {
       page,
     } as ItemPaginatedResponseDto;
   }
+
+  async remove(id: number): Promise<void> {
+    await this.itemsRepository.delete(id);
+  }
 }

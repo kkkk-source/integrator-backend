@@ -30,4 +30,9 @@ export class ItemsController {
   ): Promise<ItemPaginatedResponseDto> {
     return await this.itemsService.findAll(itemPaginatedRequest);
   }
+
+  @Delete(':id')
+  async remove(@Param('id') id: string): Promise<void> {
+    await this.itemsService.remove(+id);
+  }
 }
