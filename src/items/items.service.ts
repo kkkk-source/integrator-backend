@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Item } from './entities/item.entity';
-import { ItemPaginatedRequestDto } from './dto/item-paginated-request.dto';
 import { ItemPaginatedResponseDto } from './dto/item-paginated-response.dto';
 
 @Injectable()
@@ -32,6 +31,11 @@ export class ItemsService {
       limit,
       page,
     } as ItemPaginatedResponseDto;
+  }
+
+  async update(item: Item): Promise<Item> {
+    await this.itemsRepository.update(item.id, item);
+    return this.itemsRepository.findOne(item.id);
   }
 
   async remove(id: number): Promise<void> {
