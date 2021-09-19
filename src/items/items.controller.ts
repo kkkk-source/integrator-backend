@@ -1,5 +1,4 @@
 import {
-  Controller,
   Get,
   Post,
   Body,
@@ -7,11 +6,12 @@ import {
   Param,
   Delete,
   Query,
-  NotFoundException,
+  Controller,
 } from '@nestjs/common';
 import { Item } from './entities/item.entity';
 import { ItemsService } from './items.service';
 import { ItemCreateRequestDto } from './dto/item-create-request.dto';
+import { ItemUpdateRequestDto } from './dto/item-update-request.dto';
 import { ItemPaginatedRequestDto } from './dto/item-paginated-request.dto';
 import { ItemPaginatedResponseDto } from './dto/item-paginated-response.dto';
 
@@ -29,6 +29,11 @@ export class ItemsController {
     @Query() itemPaginatedRequest: ItemPaginatedRequestDto,
   ): Promise<ItemPaginatedResponseDto> {
     return await this.itemsService.findAll(itemPaginatedRequest);
+  }
+
+  @Patch()
+  async update(@Body() itemToEdit: ItemUpdateRequestDto): Promise<Item> {
+    return await this.itemsService.update(itemToEdit as Item);
   }
 
   @Delete(':id')

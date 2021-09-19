@@ -23,9 +23,9 @@ export class Item {
   @Column()
   price: number;
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @UpdateDateColumn({ type: 'timestamp', nullable: false })
   updatedAt: Date;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'timestamp', nullable: false })
   createdAt: Date;
 }
